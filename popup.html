@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { width: 240px; padding: 20px; background-color: #2b2d31; color: #f2f3f5; font-family: sans-serif; text-align: center; margin: 0; }
+        .header-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; gap: 8px; }
+        .app-logo { width: 48px; height: 48px; border-radius: 10px; background: #444; } /* Background shows if image fails */
+        
+        button { 
+            background-color: #5865f2; 
+            color: white; 
+            border: none; 
+            padding: 12px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            width: 100%;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        button:hover { background-color: #4752c4; }
+        
+        /* This ensures your button icon stays small and centered */
+        .button-icon { 
+            width: 20px; 
+            height: 20px; 
+            object-fit: contain; 
+        }
+
+        .footer { font-size: 11px; color: #949ba4; margin-top: 15px; }
+        #status { margin-top: 10px; color: #23a559; display: none; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <img src="icons/logo48.png" class="app-logo">
+        <h3>Discord Archiver</h3>
+    </div>
+
+    <button id="downloadBtn">
+        <img src="icons/button_logo.png" class="button-icon">
+        <span>Export to HTML</span>
+    </button>
+
+    <div id="status">Starting Export...</div>
+    <div class="footer">Navigate to a channel and click Export.</div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

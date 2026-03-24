@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Discord Archiver",
+  "version": "1.0",
+  "description": "Exports Discord channel conversations to formatted HTML files.",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["https://discord.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/logo48.png"
+    }
+  },
+  "icons": {
+    "48": "icons/logo48.png",
+    "96": "icons/logo96.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/logo48.png",
+      "96": "icons/logo96.png"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ethycryptic@gmail.com"
+    }
+  }
+}
