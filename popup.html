@@ -4,49 +4,83 @@
     <meta charset="UTF-8">
     <style>
         body { width: 240px; padding: 20px; background-color: #2b2d31; color: #f2f3f5; font-family: sans-serif; text-align: center; margin: 0; }
-        .header-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; gap: 8px; }
-        .app-logo { width: 48px; height: 48px; border-radius: 10px; background: #444; } /* Background shows if image fails */
-        
-        button { 
-            background-color: #5865f2; 
-            color: white; 
-            border: none; 
-            padding: 12px; 
-            border-radius: 4px; 
-            cursor: pointer; 
+        .header-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; gap: 6px; }
+        .app-logo { width: 48px; height: 48px; border-radius: 10px; background: #444; }
+
+        .version-row { display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .version-badge { font-size: 11px; color: #949ba4; }
+
+        /* Update chip — hidden by default, shown by JS when an update is found */
+        #updateChip {
+            display: none;
+            font-size: 10px;
+            font-weight: bold;
+            background: #23a559;
+            color: white;
+            padding: 2px 7px;
+            border-radius: 10px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        #updateChip:hover { background: #1a8a45; }
+
+        button {
+            background-color: #5865f2;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
             width: 100%;
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            transition: background-color 0.15s;
         }
-        button:hover { background-color: #4752c4; }
-        
-        /* This ensures your button icon stays small and centered */
-        .button-icon { 
-            width: 20px; 
-            height: 20px; 
-            object-fit: contain; 
-        }
+        button:hover:not(:disabled) { background-color: #4752c4; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        .footer { font-size: 11px; color: #949ba4; margin-top: 15px; }
-        #status { margin-top: 10px; color: #23a559; display: none; font-size: 12px; }
+        .button-icon { width: 20px; height: 20px; object-fit: contain; }
+
+        #status { margin-top: 10px; display: none; font-size: 12px; }
+        #status.success { color: #23a559; }
+        #status.error   { color: #f23f43; }
+
+        .footer-block { margin-top: 15px; display: flex; flex-direction: column; gap: 6px; }
+        .footer-hint  { font-size: 11px; color: #949ba4; }
+        .footer-privacy {
+            font-size: 10px;
+            color: #5865f2;
+            background: rgba(88, 101, 242, 0.1);
+            border: 1px solid rgba(88, 101, 242, 0.25);
+            border-radius: 4px;
+            padding: 5px 8px;
+        }
     </style>
 </head>
 <body>
     <div class="header-container">
-        <img src="icons/logo48.png" class="app-logo">
-        <h3>Discord Archiver</h3>
+        <img src="icons/logo48.png" class="app-logo" alt="Discord Archiver">
+        <h3 style="margin:0;">Discord Archiver</h3>
+        <div class="version-row">
+            <span class="version-badge" id="versionBadge">v1.2.0</span>
+            <a id="updateChip" target="_blank">⬆ Update available</a>
+        </div>
     </div>
 
     <button id="downloadBtn">
-        <img src="icons/button_logo.png" class="button-icon">
+        <img src="icons/button_logo.png" class="button-icon" alt="">
         <span>Export to HTML</span>
     </button>
 
-    <div id="status">Starting Export...</div>
-    <div class="footer">Navigate to a channel and click Export.</div>
+    <div id="status"></div>
+
+    <div class="footer-block">
+        <div class="footer-hint">Navigate to a channel, then click Export.</div>
+        <div class="footer-privacy">🔒 All processing is local — no data leaves your browser</div>
+    </div>
 
     <script src="popup.js"></script>
 </body>

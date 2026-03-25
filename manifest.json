@@ -1,19 +1,20 @@
 {
   "manifest_version": 3,
   "name": "Discord Archiver",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "permissions": ["scripting", "activeTab"],
-  "host_permissions": ["*://*.discord.com/*"],
+  "host_permissions": ["*://*.discord.com/*", "https://api.github.com/*"],
   "action": {
     "default_popup": "popup.html"
   },
   "icons": {
-    "48": "icons/logo48.png",
-    "96": "icons/logo96.png"
+    "48":  "icons/logo48.png",
+    "96":  "icons/logo96.png",
+    "128": "icons/logo128.png"
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "{5f9b3c10-2e1a-4b5c-8d2e-123456789abc}" 
+      "id": "{5f9b3c10-2e1a-4b5c-8d2e-123456789abc}"
     }
   }
 }
